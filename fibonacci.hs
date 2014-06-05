@@ -8,22 +8,16 @@
 -- 
 -- fib :: (Num n, Ord n) => Int -> n
 -- fib = let add :: (Num n) => n -> n -> n; add a b = a + b in gfib [0,1] [add]
--- 
-gfib :: [a -> a -> a] -> [a] -> [a]
-gfib fs (e:es) = let a = foldr ($) (last es) $ zipWith ($) fs (e:es)
-                 in e:gfib fs (es ++ [a])
 
-fib :: Num a => Int -> a
-fib n = gfib [(+)] [0,1] !! (n - 1)
+gFib :: [a -> a -> a] -> [a] -> [a]
+gFib fs (e:es) = let a = foldr ($) (last es) $ zipWith ($) fs (e:es)
+                 in e:gFib fs (es ++ [a])
 
-kieranFib :: [Integer]
-kieranFib = go 0 1
-  where go a b = a:go b (a + b)
+--fib :: Num a => Int -> a
+--fib n = gfib [(+)] [0,1] !! (n - 1)
 
-fibIO :: IO ()
-fibIO = do putStrLn "Term number: "
-           n <- getLine
-           putStrLn (show (fib ((read n) :: Int)))
+simpleGFib :: (a -> a -> a) -> a -> a -> [a]
+simpleGFib f a b = a:simpleGFib f b (f a b)
 
-main :: IO ()
-main = fibIO
+fib :: Integral a => [a]
+fib = simpleGFib (+) 0 1

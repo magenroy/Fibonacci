@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, mathtools}
+\newtheorem{conj}{Conjecture}
+\begin{document}
+
+	\begin{conj}
+		\begin{gather*}
+			\forall A \in \mathbb{R} \{ \log_2n \mid n \in S(A) \} = \{ \lfloor
+				\log_2(A + n)\rceil \mid n \in \mathbb{N} \} \\
+			\text{where } S(A) = |A| \cup S(A \cup \{|A|\})
+		\end{gather*}
+	\end{conj}
+
+\end{document}

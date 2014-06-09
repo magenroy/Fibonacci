@@ -1,7 +1,6 @@
-module Main where
+module Main (main) where
 
-import System.Environment
-import Control.Monad
+import System.Environment (getArgs)
 import Fibonacci
 
 usage :: IO ()

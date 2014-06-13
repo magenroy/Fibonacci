@@ -13,6 +13,7 @@ usage = do
 -- should make option to list terms
 -- this is obviously not ideal at the moment (so much copy and paste)
 fibIO :: [String] -> IO ()
+fibIO [] = fibIO ["help"]
 fibIO ["help"] = usage
 fibIO [n] = print (fib !! (read n))
 fibIO [n,a,b] = print (gfib (+) ((read a) :: Integer) ((read b) :: Integer) !! ((read n) :: Int))
